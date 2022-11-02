@@ -1,7 +1,7 @@
 const express = require('express');
+const pageRoute = require('./routes/pageRoute');
 const ejs = require('ejs');
 
-const pageController = require('./controllers/pageController');
 
 const app = express();
 
@@ -11,11 +11,10 @@ app.set('view engine', 'ejs');
 /**Middlewares */
 app.use(express.static('public'));
 
-/**apis */
-app.get('/', pageController.getAllCourses);
-app.get('/about', pageController.getAboutPage);
+/**Routes */
+app.use('/', pageRoute);
 
-const port = 4000;
+const port =process.env.Port || 4000;
 
 app.listen(port, () => {
   console.log(`App started on port ${port}`);
