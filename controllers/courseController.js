@@ -26,7 +26,7 @@ exports.getAllCourses = async (req, res) => {
     let filter = {};
 
     if (categorySlug) {
-      filter = { category: categories._id };
+      filter = { category: category._id };
     }
 
     const courses = await Course.find(filter);
