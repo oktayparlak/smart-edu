@@ -26,6 +26,8 @@ exports.loginUser = (req, res) => {
           if (same) {
             req.session.userID = user._id;
             res.status(200).redirect('dashboard');
+          } else {
+            res.status(401).redirect('error')
           }
         });
       }
